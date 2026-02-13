@@ -69,8 +69,12 @@ posiciones.forEach(pos => {
     flor.src = flores[Math.floor(Math.random()*flores.length)];
     flor.className="flor";
 
-    flor.style.left = pos.x + "%";
-    flor.style.top = pos.y + "%";
+    let variacionX = (Math.random()*4)-2; // -2 a +2
+let variacionY = (Math.random()*3)-1.5; // -1.5 a +1.5
+
+flor.style.left = (pos.x + variacionX) + "%";
+flor.style.top = (pos.y + variacionY) + "%";
+
    let rotacion = (pos.x - 50) / 4;
    flor.style.transform = `translate(-50%,-50%) scale(${pos.s}) rotate(${rotacion}deg)`;
     flor.style.zIndex = Math.floor(pos.y);
