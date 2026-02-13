@@ -113,7 +113,6 @@ html,body{
 </audio>
     
 <div class="controles">
-    <button id="play">⏯</button>
     <button id="menos">🔉</button>
     <button id="mas">🔊</button>
 </div>
@@ -200,18 +199,8 @@ music.addEventListener("pause", () => {
 </script>
 <script>
 const audio = document.getElementById("bg-music");
-const btnPlay = document.getElementById("play");
 const btnMas = document.getElementById("mas");
 const btnMenos = document.getElementById("menos");
-
-/* play / pause */
-btnPlay.onclick = () => {
-    if(audio.paused){
-        audio.play();
-    }else{
-        audio.pause();
-    }
-};
 
 /* subir volumen */
 btnMas.onclick = () => {
