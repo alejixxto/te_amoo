@@ -28,11 +28,58 @@ html,body{
     pointer-events:none;
     will-change:transform;
 }
+
+/* BOTON MUSICA */
+#btnMusica{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+
+    width:70px;
+    height:70px;
+
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,0.25);
+
+    background:rgba(30,30,30,0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    cursor:pointer;
+    transition:all .25s ease;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+#btnMusica:hover{
+    transform:scale(1.08);
+    background:rgba(40,40,40,0.45);
+}
+
+#btnMusica:active{
+    transform:scale(0.95);
+}
+
+#icono{
+    color:white;
+    font-size:30px;
+    user-select:none;
+}
 </style>
 </head>
 <body>
 
 <div class="escena"></div>
+
+<button id="btnMusica">
+    <span id="icono">▶</span>
+</button>
 
 <audio id="bg-music" loop preload="auto">
     <source src="musica.mp3" type="audio/mpeg">
@@ -90,6 +137,33 @@ function iniciar(){
 }
 
 window.addEventListener("load", intentarReproducir);
+</script>
+
+
+<script>
+const btn = document.getElementById("btnMusica");
+const icono = document.getElementById("icono");
+
+/* click manual */
+btn.addEventListener("click", () => {
+
+    if(music.paused){
+        music.play();
+    }else{
+        music.pause();
+    }
+
+});
+
+/* si empieza a reproducirse */
+music.addEventListener("play", () => {
+    icono.textContent = "⏸";
+});
+
+/* si se pausa */
+music.addEventListener("pause", () => {
+    icono.textContent = "▶";
+});
 </script>
 
 </body>
