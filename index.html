@@ -48,14 +48,21 @@ const flores = ["flor blanca.png","flor rosa.png","girasol.png"];
 const container = document.querySelector(".container");
 
 const posiciones = [
-    {x:50, y:20, s:1.2},
-    {x:35, y:32, s:1},
-    {x:65, y:32, s:1},
-    {x:25, y:48, s:0.85},
-    {x:75, y:48, s:0.85},
-    {x:40, y:60, s:0.7},
-    {x:60, y:60, s:0.7}
+
+    // 🌿 FONDO (atrás — arriba y pequeñas)
+    {x:30, y:28, s:0.65},
+    {x:70, y:28, s:0.65},
+
+    // 🌼 MEDIO
+    {x:40, y:40, s:0.9},
+    {x:60, y:40, s:0.9},
+
+    // 🌻 FRENTE (abajo — grandes)
+    {x:50, y:55, s:1.25},
+    {x:35, y:55, s:1.15},
+    {x:65, y:55, s:1.15}
 ];
+
 
 posiciones.forEach(pos => {
 
@@ -66,6 +73,7 @@ posiciones.forEach(pos => {
     flor.style.left = pos.x + "%";
     flor.style.top = pos.y + "%";
     flor.style.transform = `translate(-50%,-50%) scale(${pos.s})`;
+    flor.style.zIndex = Math.floor(pos.y);
 
     container.appendChild(flor);
 });
